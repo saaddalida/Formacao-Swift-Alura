@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     
     @IBOutlet var nomeTextField: UITextField?
     @IBOutlet weak var felicidadeTextField: UITextField?
+
+    var tabelaDeRefeicao: RefeicoesTableViewController?
     
     @IBAction func adicionar(_ sender: Any) {
         
@@ -26,6 +28,10 @@ class ViewController: UIViewController {
         let refeicao = Refeicao(nome: nomeDaRefeicao, felicidade: felicidade)
         
         print("comi \(refeicao.nome) e fiquei com felicidade: \(refeicao.felicidade)")
+
+        tabelaDeRefeicao?.adicionar(refeicao: refeicao)
+
+        navigationController?.popViewController(animated: true)
     }
 }
 
