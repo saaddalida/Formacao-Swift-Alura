@@ -1,41 +1,71 @@
 import UIKit
 
-//Declarando variaveis no Swift
-//Há 2 formas:
-var nome: String = "Primeira forma" //explicito
-var endereco = "Segunda forma" //implicito
-//Lembre-se: siga um padrao
-
-print(nome)
-
-//Pode-se usar variaveis ou constantes
-let constante  = "nao pode mudar de valor"
-var variavel = "pode-se mudar o valor"
-//Boa pratica: valores que nao mudam é melhor usar let, para nao correr risco de mudar um valor que nao deve ser mudado em alguma parte do programa
-
-//Uma forma de se comentar em uma linha
-
-/*
- Uma forma
- de se comentar
- em mais de uma linha
- */
-
-//Outros tipos de variaveis
-let felicidade = 5
-let calorias = 79.5
-let vegetal:Bool = false
-
-//Declaracao de funcoes
-func alimentoConsumido(){
-    print("os alimentos consumidos foram: \(nome)")
+class Refeicao {
+    
+    // MARK: - Atributos
+    
+    var nome: String
+    var felicidade: String
+    var itens: Array<Item> = []
+    
+    // MARK: - Construtor
+    
+    init(nome: String, felicidade: String) {
+        self.nome = nome
+        self.felicidade = felicidade
+    }
+    
+    // MARK: - Metodos
+    
+    func totalDeCalorias() -> Double {
+        var total = 0.0
+        
+        for item in itens {
+            total += item.calorias
+        }
+        
+        return total
+    }
 }
 
-alimentoConsumido()
-
-//Metodos com parametros
-func method(par1: String, par2: Double){
-    print("Este metodo tem 2 parametros: \(par1) e \(par2)")
+class Item {
+    var nome: String
+    var calorias: Double
+    
+    init(nome: String, calorias: Double) {
+        self.nome = nome
+        self.calorias = calorias
+    }
 }
-method(par1 : "Nikolas", par2 : 33.3)
+
+let arroz = Item(nome: "Arroz", calorias: 51.0)
+let feijao = Item(nome: "Feijão", calorias: 90.0)
+let contraFile = Item(nome: "Contra Filé", calorias: 287.0)
+
+let refeicao = Refeicao(nome: "Almoço", felicidade: "5")
+refeicao.itens.append(arroz)
+refeicao.itens.append(feijao)
+refeicao.itens.append(contraFile)
+
+print(refeicao.nome)
+if let primeiroItemDaLista = refeicao.itens.first {
+    print(primeiroItemDaLista.nome)
+}
+
+print(refeicao.totalDeCalorias())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
