@@ -2,7 +2,7 @@
 //  Refeicao.swift
 //  eggplant-brownie
 //
-//  Created by Andriu Felipe Coelho on 16/03/19.
+//  Created by Alura on 16/03/19.
 //  Copyright © 2019 Alura. All rights reserved.
 //
 
@@ -14,13 +14,14 @@ class Refeicao: NSObject {
     
     let nome: String
     let felicidade: Int
-    let itens: Array<Item> = []
+    var itens: Array<Item> = []
     
     // MARK: - Init
     
-    init(nome: String, felicidade: Int) {
+    init(nome: String, felicidade: Int, itens: [Item] = []) {
         self.nome = nome
         self.felicidade = felicidade
+        self.itens = itens
     }
     
     // MARK: - Metodos
